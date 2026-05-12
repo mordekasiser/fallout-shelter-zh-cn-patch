@@ -2,6 +2,10 @@
 
 This repository contains tools and Simplified Chinese translation data for building a local Fallout Shelter localization patch.
 
-The MIT License applies to this repository's scripts, tests, and project documentation. Fallout Shelter, Bethesda, Steam, and related names, trademarks, game binaries, game assets, and original game text belong to their respective owners and are not included in this repository.
+This is an unofficial community project. It is not affiliated with, sponsored by, endorsed by, or authorized by Bethesda, Steam, Microsoft, or any other right holder.
 
-Users must provide their own legally installed PC copy of Fallout Shelter. The generated `data.unity3d` file is built locally from the user's own game files and should not be redistributed through this repository, release attachments, mirrors, chat groups, or file-sharing services.
+The MIT License applies to this repository's scripts, tests, and project documentation. Fallout Shelter, Bethesda, Steam, and related names, trademarks, game binaries, game assets, original fonts, original audio, original artwork, and original game text belong to their respective owners and are not included in this repository.
+
+Users must provide their own legally installed PC copy of Fallout Shelter. Generated patch files are built locally from the user's own game files and are intended only for the user's personal local use.
+
+Issues, pull requests, attachments, and releases containing official game assets, generated full resource bundles, third-party closed-source patches, cracked files, credentials, API keys, or private local configuration are not accepted.

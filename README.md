@@ -102,11 +102,11 @@ Fallout Shelter -> 属性 -> 已安装文件 -> 验证游戏文件的完整性
 
 不会。这个补丁只替换游戏资源包 `FalloutShelter_Data\data.unity3d`，不处理存档、Steam、成就、联网或游戏程序本体。
 
-### 为什么不直接提供覆盖包？
+### 为什么需要本机生成？
 
-直接发布完整 `data.unity3d` 会包含官方资源。本项目只发布脚本和翻译表，让用户用自己电脑里的正版文件生成补丁。
+完整 `data.unity3d` 会包含官方游戏资源。本项目只提供脚本和翻译表，由用户在自己的电脑上基于已安装的正版游戏文件生成本地补丁。
 
-你本机生成出来的 `dist\FalloutShelter_汉化补丁\FalloutShelter_Data\data.unity3d` 也不要上传网盘、群聊、论坛或 GitHub Release 二次分发。
+生成结果仅供用户在自己的本机游戏副本中使用，不属于本仓库发布内容。
 
 ### 游戏更新后怎么办？
 
@@ -137,14 +137,17 @@ powershell -ExecutionPolicy Bypass -File .\scripts\generate_patch.ps1 -GameDir "
 .\.venv\Scripts\python.exe -m tools.translation_pipeline validate --translations translations\zh_cn_full.csv
 ```
 
-## 项目边界
+## 免责声明
 
-- 不提供、不托管、不再分发官方完整 `data.unity3d`。
-- 不上传、不托管、不二次分发本机生成后的完整 `data.unity3d`。
-- 不修改 `FalloutShelter.exe`。
-- 不修改 Steam、DRM、联网、存档、成就或玩法逻辑。
-- 不使用 ReiPatcher、XUnity AutoTranslator 等运行时注入方式。
-- 不处理破解内容。
+本项目是非官方社区工具，与 Bethesda、Steam、Microsoft 或其他权利方无关，也未获得其赞助、认可或授权。
+
+本项目仓库只包含工具代码、测试、项目文档和简体中文翻译数据，不包含、托管或再分发《Fallout Shelter》的官方游戏程序、资源包、原始美术、音频、字体或其他受版权保护的官方素材。
+
+用户必须自行拥有并安装合法的 PC 版《Fallout Shelter》。脚本生成的补丁文件来自用户本机游戏文件，仅供用户个人本机使用。使用本项目产生的任何兼容性问题、游戏文件损坏、更新失效、翻译错误或其他风险由用户自行承担。
+
+本项目不修改 `FalloutShelter.exe`，不绕过 Steam、DRM、联网、存档、成就或其他访问控制，不提供破解内容，也不使用运行时注入式翻译工具。
+
+完整声明见 [DISCLAIMER.md](DISCLAIMER.md) 和 [NOTICE.md](NOTICE.md)。
 
 ## 仓库内容
 
@@ -156,6 +159,7 @@ tests/                      自动化测试
 translations/               汉化 CSV
 LICENSE                     工具代码许可证
 NOTICE.md                   第三方权利和资源边界说明
+DISCLAIMER.md               免责声明
 ```
 
 本地生成目录已被 `.gitignore` 忽略：
@@ -166,4 +170,8 @@ dist/
 submission/
 ```
 
-请不要把官方资源包、生成后的完整 `data.unity3d`、压缩交付包、API key 或本机配置提交到仓库，也不要把这些文件作为 Release 附件上传。
+## 参与贡献
+
+欢迎提交翻译修正、脚本改进和问题反馈。贡献内容应只包含你有权提交的代码、文档或翻译文本。
+
+本仓库不接受包含官方游戏资源、完整生成补丁包、第三方闭源补丁、破解内容、账号凭据、API key 或本机私有配置的 Issue、Pull Request、附件或 Release。
