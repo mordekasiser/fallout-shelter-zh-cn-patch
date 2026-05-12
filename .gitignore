@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Generated local artifacts. Do not commit official game resources.
+workspace/
+dist/
+submission/
+*.unity3d
+*.resource
+*.assets
+*.resS
+*.bundle
+*.bak
+*.old
+*.org
+*.new
+
+# Local machine configuration.
+.env
+.env.*
+local_config.json
