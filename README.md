@@ -1,5 +1,9 @@
 # Fallout Shelter 简体中文补丁
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://python.org)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D4.svg)](#使用方法)
+
 这是 Steam PC 版《Fallout Shelter》的简体中文补丁工具。
 
 你只需要双击脚本生成补丁，然后把生成出来的 `FalloutShelter_Data` 文件夹拖到游戏目录里，选择覆盖即可。
@@ -7,6 +11,18 @@
 本项目不提供官方完整 `data.unity3d`，不发布破解包。补丁文件会在你的电脑上用本机正版游戏资源生成。
 
 翻译表使用游戏内的 `term` 作为匹配键。脚本生成补丁时会读取你当前游戏文件里的英文文本，并检查译文里的 `{0}`、`[RB]`、富文本标签等格式标记；如果游戏更新导致 key 或格式不匹配，脚本会报错，不会静默生成错位补丁。
+
+## 当前状态
+
+项目仍处于测试阶段，后续会继续修复 bug、补充翻译和适配游戏更新。不同 Steam 安装目录、系统环境或游戏版本可能触发兼容性问题。
+
+如果脚本报错，请不要强行覆盖游戏文件。欢迎提交 Issue，并附上游戏版本、系统版本、错误信息和复现步骤。
+
+## 适合谁
+
+- 想在 Steam PC 版《Fallout Shelter》中使用简体中文的玩家
+- 希望补丁在本机从正版游戏资源生成，而不是下载完整改包的用户
+- 愿意反馈翻译问题、脚本兼容性问题或游戏更新后适配问题的测试用户
 
 ## 使用方法
 
@@ -175,3 +191,5 @@ submission/
 欢迎提交翻译修正、脚本改进和问题反馈。贡献内容应只包含你有权提交的代码、文档或翻译文本。
 
 本仓库不接受包含官方游戏资源、完整生成补丁包、第三方闭源补丁、破解内容、账号凭据、API key 或本机私有配置的 Issue、Pull Request、附件或 Release。
+
+如果这个项目帮到了你，或者你想关注后续修复和更新，欢迎点一个 Star 或 Watch。
