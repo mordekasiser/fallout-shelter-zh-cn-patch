@@ -1,0 +1,95 @@
+name: Bug report
+description: Report a patch generation, compatibility, or translation problem.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing this Fallout Shelter Chinese patch builder. The project is still in testing, so environment details and script output are important.
+
+        Do not upload official game files, generated full patch packages, full `data.unity3d` files, cracked content, account credentials, or private local configuration.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety checklist
+      options:
+        - label: I own and installed a legitimate PC copy of Fallout Shelter.
+          required: true
+        - label: I am not uploading official game assets or generated full patch packages.
+          required: true
+        - label: If the script failed, I did not force-copy a broken output into the game directory.
+          required: true
+  - type: input
+    id: windows-version
+    attributes:
+      label: Windows version
+      placeholder: "Example: Windows 11 23H2"
+    validations:
+      required: true
+  - type: input
+    id: game-version
+    attributes:
+      label: Fallout Shelter version or Steam build
+      placeholder: "Example: Steam PC version, build/date if known"
+    validations:
+      required: true
+  - type: dropdown
+    id: game-location
+    attributes:
+      label: Game directory detection
+      options:
+        - Auto-detected by the script
+        - Manually selected when prompted
+        - Manually passed with -GameDir
+        - Not found
+    validations:
+      required: true
+  - type: dropdown
+    id: failure-area
+    attributes:
+      label: Problem area
+      options:
+        - Script startup
+        - Python dependency installation
+        - Steam game directory detection
+        - Patch generation
+        - Manual copy/overwrite step
+        - In-game text or translation
+        - Game update compatibility
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run ...
+        2. Choose ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: script-output
+    attributes:
+      label: Script output or error text
+      description: Paste redacted text output. Do not attach official game files or generated patch packages.
+      render: text
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: For translation issues, quote only the short affected text and describe where it appears.

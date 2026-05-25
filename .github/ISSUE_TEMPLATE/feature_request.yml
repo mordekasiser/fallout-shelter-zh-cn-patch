@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest an improvement for the patch builder or translation workflow.
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. Please keep requests limited to code, docs, scripts, tests, or translation text that can be legally included in this repository.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      placeholder: "Example: The script cannot find my Steam library when..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the smallest useful version of the feature.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Patch generation script
+        - Steam directory detection
+        - Translation text
+        - Translation validation
+        - Documentation
+        - Testing
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: legal-boundary
+    attributes:
+      label: Repository boundary
+      description: Confirm whether the idea can be implemented without including official game assets, generated full patch packages, cracked files, or third-party closed-source patches.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context

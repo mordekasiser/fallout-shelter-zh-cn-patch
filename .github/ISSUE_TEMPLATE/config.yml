@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or copyright-sensitive concern
+    url: https://github.com/mordekasiser/fallout-shelter-zh-cn-patch/security/advisories/new
+    about: Please report security, credential, or copyright-sensitive issues privately.
