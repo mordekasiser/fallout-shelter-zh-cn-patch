@@ -181,6 +181,7 @@ scripts/                    一键脚本
 tools/                      补丁生成、资源导出、翻译校验和补译脚本
 tests/                      自动化测试
 translations/               汉化 CSV
+docs/                       项目文档
 LICENSE                     工具代码许可证
 NOTICE.md                   第三方权利和资源边界说明
 DISCLAIMER.md               免责声明
@@ -188,6 +189,7 @@ CONTRIBUTING.md             贡献说明
 SECURITY.md                 安全与敏感问题报告方式
 CODE_OF_CONDUCT.md          社区行为准则
 CHANGELOG.md                变更记录
+docs/maintainer.md          维护者更新流程和分支保护说明
 ```
 
 本地生成目录已被 `.gitignore` 忽略：

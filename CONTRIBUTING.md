@@ -45,6 +45,10 @@ git diff --check
 - 涉及安全、版权或凭据的问题，请优先使用 `SECURITY.md` 里的私密报告路径。
 - 提交 Issue 或 Pull Request 前，请确认内容不包含上述不接受的文件或信息。
 
+## 维护者流程
+
+维护者更新分支保护、发布流程或游戏版本适配时，请同步检查 [docs/maintainer.md](docs/maintainer.md)。
+
 ## 行为准则
 
 参与本项目需遵守 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)。

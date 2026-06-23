@@ -9,6 +9,7 @@ This project follows the spirit of Keep a Changelog and uses simple sections suc
 ### Added
 
 - Add repository governance files for security reporting, pull request review, ownership, dependency updates, changelog tracking, and community conduct.
+- Add maintainer notes for the `master` ruleset, update workflow, generated artifact checks, and GitHub comment encoding.
 - Add PowerShell regression coverage for the one-click patch generation path.
 
 ### Changed
