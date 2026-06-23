@@ -562,13 +562,19 @@ def build_patch(
     missing_translation_terms = find_missing_translation_terms(
         source_data, translations
     )
-    if require_all_translations and missing_translation_terms:
+    if missing_translation_terms:
         preview = ", ".join(missing_translation_terms[:20])
         if len(missing_translation_terms) > 20:
             preview += f", ... {len(missing_translation_terms) - 20} more"
-        raise ValueError(
-            "translation table contains terms not found in the language source: "
-            f"{preview}"
+        if require_all_translations:
+            raise ValueError(
+                "translation table contains terms not found in the language source: "
+                f"{preview}"
+            )
+        print(
+            "WARNING: translation table contains terms not found in the current "
+            "language source; they will be skipped. This usually means the game "
+            f"version changed. Missing terms: {preview}"
         )
 
     if validate_translations and terms_csv is None:

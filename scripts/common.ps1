@@ -235,19 +235,25 @@ function Invoke-FalloutShelterPatchBuild {
         throw "没有在 Windows 字体目录找到中文字体。请先安装 Windows 简体中文语言支持，然后重新运行脚本。"
     }
 
+    Write-Host "提示：如果当前游戏版本和翻译表不完全一致，脚本会跳过已经不存在的旧文本并继续生成。" -ForegroundColor Yellow
+    Write-Host "提示：新版新增文本暂时会保持原文；生成后请先测试，不正常时可在 Steam 验证游戏文件恢复。" -ForegroundColor Yellow
+
     $args = @(
         "-m", "tools.build_patch",
         "--bundle", $bundlePath,
         "--game-dir", $GameDir,
         "--translations", $translations,
         "--output-dir", $outputDir,
+        "--allow-unmatched-translations",
         "--font-file", $font.Path,
         "--font-name", $font.Name
     )
 
     Push-Location $script:PatchProjectRoot
     try {
-        Invoke-NativeCommand -FilePath $PythonExe -Arguments $args
+        Invoke-NativeCommand -FilePath $PythonExe -Arguments $args | ForEach-Object {
+            Write-Host $_
+        }
     }
     finally {
         Pop-Location

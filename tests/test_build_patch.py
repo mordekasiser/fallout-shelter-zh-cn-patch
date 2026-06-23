@@ -136,6 +136,83 @@ def test_find_missing_translation_terms_reports_unmatched_keys() -> None:
     assert missing == ["Button_Missing"]
 
 
+def test_build_patch_rejects_unmatched_translation_terms_by_default(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    bundle_path = tmp_path / "data.unity3d"
+    bundle_path.write_bytes(b"bundle")
+    translations_csv = tmp_path / "zh.csv"
+    translations_csv.write_text(
+        "term,zh_cn\n"
+        "Button_Accept,接受\n"
+        "Button_Missing,缺失\n",
+        encoding="utf-8",
+    )
+    language_source = FakeLanguageSourceObject()
+
+    monkeypatch.setattr(
+        "tools.build_patch.UnityPy.load",
+        lambda _path: FakePatchEnv(language_source),
+    )
+    monkeypatch.setattr("tools.build_patch.attach_typetree_generator", lambda *_args: None)
+    monkeypatch.setattr(
+        "tools.build_patch.find_language_source_objects",
+        lambda _env: [language_source],
+    )
+    monkeypatch.setattr("tools.build_patch.parse_language_source", lambda _data: make_source())
+
+    with pytest.raises(ValueError, match="Button_Missing"):
+        build_patch(
+            bundle_path=bundle_path,
+            game_dir=tmp_path,
+            translations_csv=translations_csv,
+            output_dir=tmp_path / "patch",
+        )
+
+
+def test_build_patch_warns_and_skips_unmatched_translation_terms_when_allowed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    bundle_path = tmp_path / "data.unity3d"
+    bundle_path.write_bytes(b"bundle")
+    translations_csv = tmp_path / "zh.csv"
+    translations_csv.write_text(
+        "term,zh_cn\n"
+        "Button_Accept,接受\n"
+        "Button_Missing,缺失\n",
+        encoding="utf-8",
+    )
+    language_source = FakeLanguageSourceObject()
+
+    monkeypatch.setattr(
+        "tools.build_patch.UnityPy.load",
+        lambda _path: FakePatchEnv(language_source),
+    )
+    monkeypatch.setattr("tools.build_patch.attach_typetree_generator", lambda *_args: None)
+    monkeypatch.setattr(
+        "tools.build_patch.find_language_source_objects",
+        lambda _env: [language_source],
+    )
+    monkeypatch.setattr("tools.build_patch.parse_language_source", lambda _data: make_source())
+    monkeypatch.setattr("tools.build_patch.serialize_language_source", lambda _source: b"source")
+
+    result = build_patch(
+        bundle_path=bundle_path,
+        game_dir=tmp_path,
+        translations_csv=translations_csv,
+        output_dir=tmp_path / "patch",
+        require_all_translations=False,
+    )
+
+    output = capsys.readouterr().out
+    assert "WARNING" in output
+    assert "Button_Missing" in output
+    assert result.matched_translation_count == 1
+    assert result.patched_term_count == 1
+    assert result.output_bundle.read_bytes() == b"patched-bundle"
+    assert language_source.raw_data == b"source"
+
+
 def test_get_term_english_lookup_reads_current_language_source() -> None:
     assert get_term_english_lookup([make_source()]) == {
         "Button_Accept": "ACCEPT",
@@ -555,3 +632,27 @@ class FakeObject:
     def save_typetree(self, tree: dict) -> None:
         self.saved_tree = dict(tree)
         self._tree = dict(tree)
+
+
+class FakeLanguageSourceObject:
+    def __init__(self) -> None:
+        self.raw_data = b"source-before"
+
+    def get_raw_data(self) -> bytes:
+        return self.raw_data
+
+    def set_raw_data(self, data: bytes) -> None:
+        self.raw_data = data
+
+
+class FakePatchFile:
+    def save(self, packer: str = "none") -> bytes:
+        assert packer == "none"
+        return b"patched-bundle"
+
+
+class FakePatchEnv:
+    def __init__(self, language_source: FakeLanguageSourceObject) -> None:
+        self.assets = [SimpleNamespace(version="6000.0f2")]
+        self.objects = [language_source]
+        self.file = FakePatchFile()
