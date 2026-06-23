@@ -41,6 +41,8 @@ git diff --check
 
 - 一次 Pull Request 只处理一个清晰目标。
 - 行为变更需要补测试，至少说明已运行的测试命令。
+- 外部贡献需要通过 Pull Request，并等待 GitHub Actions `tests` 检查通过。
+- Pull Request 合并前需要维护者 review。
 - 影响普通用户使用方式时，请同步更新 `README.md`。
 - 涉及安全、版权或凭据的问题，请优先使用 `SECURITY.md` 里的私密报告路径。
 - 提交 Issue 或 Pull Request 前，请确认内容不包含上述不接受的文件或信息。

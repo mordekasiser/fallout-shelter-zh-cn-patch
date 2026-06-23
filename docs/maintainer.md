@@ -6,16 +6,31 @@
 
 GitHub 仓库已启用 ruleset：`Protect master`。
 
-当前规则只保护 `master` 的历史安全：
+当前规则保护 `master` 的历史安全和外部贡献流程：
 
 - 禁止删除 `master`。
 - 禁止 non-fast-forward push，也就是禁止 force push 覆盖历史。
+- 外部贡献必须通过 Pull Request。
+- Pull Request 需要至少 1 个 approving review。
+- Pull Request 合并前必须通过 GitHub Actions 的 `tests` status check。
 
-当前规则暂不强制 Pull Request、review 或 status checks，因为仓库还没有 GitHub Actions CI。维护者仍可以正常把本地 `master` 的快进提交推送到远端。
+仓库 owner / administrator 保留 bypass 权限，用于紧急修复、维护配置或恢复仓库状态。正常情况下仍建议走 Pull Request；只有确认本地检查通过且变更很明确时，才使用 bypass 直接推送。
 
-如果未来新增 `.github/workflows/` 自动测试，再考虑把 `pytest` 等检查加入 required status checks。不要在没有可用 CI 的情况下强制 status checks，否则后续 PR 可能无法合并。
+不要用 `git push --force` 或 `git push --delete origin master`。ruleset 会阻止这些操作；如果真的需要修复历史，先新建备份分支并在 GitHub 设置中临时调整 ruleset。
 
 ## 日常更新流程
+
+### 外部贡献流程
+
+1. 贡献者从 fork 或功能分支提交 Pull Request。
+2. GitHub Actions 自动运行 `CI / tests`。
+3. 维护者检查 diff、确认没有官方游戏资源、生成补丁包或敏感信息。
+4. 至少 1 个维护者 approving review。
+5. `tests` status check 通过后再合并。
+
+### 维护者直接更新流程
+
+维护者可以 bypass Pull Request / review / status checks，但直接推送前必须完成下面步骤。
 
 1. 拉取最新远端状态。
 
@@ -74,8 +89,6 @@ git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 pus
 ```
 
 如果本机代理不是 `7897`，请替换为实际端口。
-
-不要用 `git push --force` 或 `git push --delete origin master`。ruleset 会阻止这些操作；如果真的需要修复历史，先新建备份分支并在 GitHub 设置中临时调整 ruleset。
 
 ## 处理游戏更新
 
