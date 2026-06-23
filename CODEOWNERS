@@ -1,0 +1,18 @@
+# Default ownership for all repository changes.
+* @mordekasiser
+
+# Patch generation and resource-processing code.
+/scripts/ @mordekasiser
+/tools/ @mordekasiser
+/tests/ @mordekasiser
+
+# Translation data and project documentation.
+/translations/ @mordekasiser
+/README.md @mordekasiser
+/CONTRIBUTING.md @mordekasiser
+/DISCLAIMER.md @mordekasiser
+/NOTICE.md @mordekasiser
+/SECURITY.md @mordekasiser
+
+# GitHub repository configuration.
+/.github/ @mordekasiser
