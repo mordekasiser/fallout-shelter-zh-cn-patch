@@ -182,6 +182,7 @@ tools/                      补丁生成、资源导出、翻译校验和补译�
 tests/                      自动化测试
 translations/               汉化 CSV
 docs/                       项目文档
+docs/project-status.md      当前仓库状态和治理配置摘要
 LICENSE                     工具代码许可证
 NOTICE.md                   第三方权利和资源边界说明
 DISCLAIMER.md               免责声明

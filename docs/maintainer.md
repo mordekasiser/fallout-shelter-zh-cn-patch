@@ -2,6 +2,8 @@
 
 本页记录维护者更新仓库时需要遵守的流程，避免误删主分支、强推覆盖历史、提交生成资源或发布乱码评论。
 
+当前仓库状态、打开事项和治理配置摘要见 [project-status.md](project-status.md)。
+
 ## `master` 分支保护
 
 GitHub 仓库已启用 ruleset：`Protect master`。
