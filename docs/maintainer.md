@@ -111,6 +111,8 @@ git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 pus
 
 发布新的 GitHub Release 前，需要先确认仓库内记录和远端发布状态一致。
 
+同一轮大更新只维护一个 Release。发布后如果只是修正文案、维护记录、Issue 回复口径或下载说明，应把当前 Release 的 tag 更新到这一轮大更新的最终提交；不要为同一轮内容再开第二个 Release。只有出现新的功能范围、兼容性范围或需要单独追踪的补丁批次时，才创建新版本号。
+
 1. 更新 `CHANGELOG.md`，把本次要发布的内容从 `Unreleased` 移到明确版本号。
 2. 在 `docs/releases/` 下归档对应版本的发布说明。
 3. 更新 `docs/project-status.md` 中的当前发布状态、已知问题和打开事项。
@@ -126,6 +128,7 @@ git diff --check
 7. 发布后从 GitHub API 读回 Release 正文和标签信息，确认：
 
 - tag 指向预期提交。
+- GitHub Release 页面里的 `Source code (zip)` 能包含本轮最终 README 和文档说明。
 - Release 正文没有 `????`、`�`、`锟斤拷` 等乱码。
 - `CHANGELOG.md`、`docs/project-status.md` 和 `docs/releases/` 中的版本号一致。
 
@@ -144,7 +147,8 @@ git diff --check
 发布后回查记录：
 
 - GitHub Release：`v0.1.1-alpha` 已创建；正文已回读确认，中文显示正常。
-- GitHub Actions：发布提交对应的 `CI / tests` 已通过。
+- GitHub Release tag：本轮文档和 Issue 口径修正完成后，更新到最终提交，确保 `Source code (zip)` 包含最新说明。
+- GitHub Actions：发布提交和本轮最终提交对应的 `CI / tests` 已通过。
 - Issue #3：已提示用户改用新发布版本验证并关闭；如果新版仍失败，可重新打开或新开 Issue。
 
 ## GitHub 评论和中文编码

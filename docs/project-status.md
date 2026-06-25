@@ -26,7 +26,7 @@ Last updated: 2026-06-25
 
 最新测试发布版本：`v0.1.1-alpha`。
 
-本次发布用于把 `master` 上已经完成的生成兼容性修复同步到 GitHub Release。旧的 `v0.1.0-alpha` 发布包仍指向 2026-05-25 的早期提交，不包含游戏资源 term 差异时继续生成的修复。用户如果遇到旧版本报错，应优先改用 `v0.1.1-alpha` 或最新 `master`。
+本次发布用于把 `master` 上已经完成的生成兼容性修复同步到 GitHub Release。后续同一轮大更新内的说明、Issue 回复口径和维护记录修正，也归入 `v0.1.1-alpha`，不单独创建第二个 Release；Release tag 应指向这一轮大更新的最终提交，确保 `Source code (zip)` 包含最新 README 和发布说明。旧的 `v0.1.0-alpha` 发布包仍指向 2026-05-25 的早期提交，不包含游戏资源 term 差异时继续生成的修复。用户如果遇到旧版本报错，应优先改用 `v0.1.1-alpha` 或最新 `master`。
 
 发布说明归档在 [releases/v0.1.1-alpha.md](releases/v0.1.1-alpha.md)。
 
