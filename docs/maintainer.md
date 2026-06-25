@@ -32,7 +32,7 @@ GitHub 仓库已启用 ruleset：`Protect master`。
 
 ### 维护者直接更新流程
 
-维护者可以 bypass Pull Request / review / status checks，但直接推送前必须完成下面步骤。
+维护者可以绕过 Pull Request、review 和 status check 直接推送，但直接推送前必须完成下面步骤。
 
 1. 拉取最新远端状态。
 
@@ -111,9 +111,9 @@ git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 pus
 
 发布新的 GitHub Release 前，需要先确认仓库内记录和远端发布状态一致。
 
-同一轮大更新只维护一个 Release。发布后如果只是修正文案、维护记录、Issue 回复口径或下载说明，应把当前 Release 的 tag 更新到这一轮大更新的最终提交；不要为同一轮内容再开第二个 Release。只有出现新的功能范围、兼容性范围或需要单独追踪的补丁批次时，才创建新版本号。
+同一轮大更新只维护一个 Release。发布后如果只是修正文案、维护记录、Issue 回复口径或下载说明，应把当前 Release 的 tag 更新到这一轮大更新的最终提交，不再为同一轮内容另开第二个 Release。涉及新的功能范围、兼容性范围或需要单独追踪的补丁批次时，才创建新版本号。
 
-1. 更新 `CHANGELOG.md`，把本次要发布的内容从 `Unreleased` 移到明确版本号。
+1. 更新 `CHANGELOG.md`，把本次要发布的内容从“待发布”移到明确版本号。
 2. 在 `docs/releases/` 下归档对应版本的发布说明。
 3. 更新 `docs/project-status.md` 中的当前发布状态、已知问题和打开事项。
 4. 运行本地检查。
