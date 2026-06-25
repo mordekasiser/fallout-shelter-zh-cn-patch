@@ -107,6 +107,46 @@ git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 pus
 
 如果本机有 Steam 版游戏，也建议用真实 `FalloutShelter_Data\data.unity3d` 生成一次补丁，并确认生成产物仍在 `.gitignore` 忽略目录中。
 
+## 发布版本流程
+
+发布新的 GitHub Release 前，需要先确认仓库内记录和远端发布状态一致。
+
+1. 更新 `CHANGELOG.md`，把本次要发布的内容从 `Unreleased` 移到明确版本号。
+2. 在 `docs/releases/` 下归档对应版本的发布说明。
+3. 更新 `docs/project-status.md` 中的当前发布状态、已知问题和打开事项。
+4. 运行本地检查。
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+git diff --check
+```
+
+5. 提交并推送记录更新。
+6. 用 UTF-8 无 BOM 的发布说明文件创建 Release，避免中文在 GitHub 正文中乱码。
+7. 发布后从 GitHub API 读回 Release 正文和标签信息，确认：
+
+- tag 指向预期提交。
+- Release 正文没有 `????`、`�`、`锟斤拷` 等乱码。
+- `CHANGELOG.md`、`docs/project-status.md` 和 `docs/releases/` 中的版本号一致。
+
+## 发布记录
+
+### `v0.1.1-alpha` - 2026-06-25
+
+目的：把 `master` 上已经完成并通过测试的生成兼容性修复发布到 GitHub Release，避免用户继续下载 `v0.1.0-alpha` 旧包后遇到已修复的旧 term 缺失报错。
+
+记录文件：
+
+- `CHANGELOG.md`
+- `docs/project-status.md`
+- `docs/releases/v0.1.1-alpha.md`
+
+发布后需要回查：
+
+- GitHub Release：`v0.1.1-alpha`
+- GitHub Actions：发布提交对应的 `CI / tests`
+- Issue #3：提示用户改用新发布版本验证
+
 ## GitHub 评论和中文编码
 
 通过 GitHub、`gh`、PowerShell 或其他 CLI 发布中文内容时，不要直接依赖 PowerShell 管道或默认 stdin 编码。优先使用 UTF-8 无 BOM 临时文件或 GitHub API JSON 请求发送。

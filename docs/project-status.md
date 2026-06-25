@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-06-23
+Last updated: 2026-06-25
 
 本页记录仓库当前维护状态，方便后续维护者、贡献者或自动化代理快速了解项目边界和治理配置。
 
@@ -21,6 +21,14 @@ Last updated: 2026-06-23
 - `Theme_Name_UltraciteExterior`
 
 这些 term 在当前游戏资源中不存在，普通生成入口会提示风险并继续生成。v2.4.1 新增文本目前可能仍保持原文，后续更新翻译表时再补。
+
+## 当前发布状态
+
+最新测试发布版本：`v0.1.1-alpha`。
+
+本次发布用于把 `master` 上已经完成的生成兼容性修复同步到 GitHub Release。旧的 `v0.1.0-alpha` 发布包仍指向 2026-05-25 的早期提交，不包含游戏资源 term 差异时继续生成的修复。用户如果遇到旧版本报错，应优先改用 `v0.1.1-alpha` 或最新 `master`。
+
+发布说明归档在 [releases/v0.1.1-alpha.md](releases/v0.1.1-alpha.md)。
 
 ## GitHub 仓库治理
 
@@ -73,6 +81,9 @@ GitHub Actions workflow：
 - Issue #1：`[Feature]: 5月28日 v2.4.1 版本更新`
   - 已回复：普通生成入口已支持跳过当前版本缺失的旧 term 并继续生成。
   - 后续：新增文本翻译表待后续补充。
+- Issue #3：`[Bug]: 错误，无法生成汉化补丁`
+  - 初步判断：用户截图显示使用的是 `v0.1.0-alpha` 旧包，报错正是后续 `master` 已修复的旧 term 缺失问题。
+  - 后续：引导用户改用 `v0.1.1-alpha` 或最新 `master`，如果仍失败再补完整控制台输出。
 - Pull Request #2：`chore: bump pytest from 9.0.2 to 9.1.1`
   - 来源：Dependabot。
   - 后续：需要跑 CI 并确认兼容后再合并。

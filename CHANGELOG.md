@@ -6,8 +6,13 @@ This project follows the spirit of Keep a Changelog and uses simple sections suc
 
 ## Unreleased
 
+No unreleased changes.
+
+## v0.1.1-alpha - 2026-06-25
+
 ### Added
 
+- Add archived release notes for `v0.1.1-alpha`.
 - Add GitHub Actions CI for the Python test suite.
 - Add a project status document summarizing governance settings, CI, branch rules, open items, and maintainer notes.
 - Add repository governance files for security reporting, pull request review, ownership, dependency updates, changelog tracking, and community conduct.
