@@ -12,6 +12,7 @@ This project follows the spirit of Keep a Changelog and uses simple sections suc
 - Clarify the recommended download path and why generated `data.unity3d` files can be much larger than the official bundle.
 - Update `v0.1.1-alpha` release notes to use neutral user-facing troubleshooting guidance.
 - Update project status after closing Issue #3 and merging Dependabot PR #2.
+- Clarify the translation update cadence, Traditional Chinese plan, and generated bundle scope in user-facing documentation.
 
 ### Fixed
 

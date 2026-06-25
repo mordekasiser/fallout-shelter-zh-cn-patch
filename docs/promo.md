@@ -24,7 +24,7 @@
 
 GitHub：https://github.com/mordekasiser/fallout-shelter-zh-cn-patch
 
-如果你也想关注后续翻译修正和兼容性更新，欢迎 star/watch。
+如果你也想关注后续兼容性修复和翻译表集中更新，欢迎 star/watch。
 
 ## 中文长帖
 
@@ -42,11 +42,11 @@ GitHub：https://github.com/mordekasiser/fallout-shelter-zh-cn-patch
 
 翻译表使用游戏内 `term` 作为匹配键。生成时会检查 `{0}`、`[RB]`、富文本标签等格式标记。普通生成脚本遇到游戏版本文本差异时会提示风险并继续生成，新版新增文本可能暂时保持原文；如果格式标记不匹配，脚本仍会报错，避免静默生成错位补丁。
 
-目前仍处于测试阶段，后续会继续修 bug、补翻译和适配游戏更新。如果你愿意试用，遇到问题可以提交 Issue，最好附上系统版本、游戏版本、错误信息和复现步骤。
+目前仍处于测试阶段，会优先处理影响生成和使用的 bug。新版新增文本和零散漏翻会先收集，等内容积累多一些后再集中整理翻译表。如果你愿意试用，遇到问题可以提交 Issue，最好附上系统版本、游戏版本、错误信息和复现步骤。
 
 项目地址：https://github.com/mordekasiser/fallout-shelter-zh-cn-patch
 
-如果这个项目对你有用，欢迎 star/watch 关注后续更新，也欢迎分享给需要 Steam PC 版《Fallout Shelter》简体中文补丁的玩家。
+如果这个项目对你有用，欢迎 star/watch 关注后续兼容性修复和翻译表集中更新，也欢迎分享给需要 Steam PC 版《Fallout Shelter》简体中文补丁的玩家。
 
 ## English Short Post
 
