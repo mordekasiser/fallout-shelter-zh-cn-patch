@@ -6,7 +6,13 @@ This project follows the spirit of Keep a Changelog and uses simple sections suc
 
 ## Unreleased
 
-No unreleased changes.
+### Changed
+
+- Localize GitHub issue templates to avoid confusing browser-translated labels.
+
+### Fixed
+
+- Add the missing `needs-triage` and `dependencies` GitHub labels used by issue templates and Dependabot.
 
 ## v0.1.1-alpha - 2026-06-25
 

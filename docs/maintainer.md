@@ -152,3 +152,16 @@ git diff --check
 通过 GitHub、`gh`、PowerShell 或其他 CLI 发布中文内容时，不要直接依赖 PowerShell 管道或默认 stdin 编码。优先使用 UTF-8 无 BOM 临时文件或 GitHub API JSON 请求发送。
 
 发布后必须从 GitHub API 读回正文，确认没有 `????`、`�`、`锟斤拷` 等编码损坏痕迹。发现乱码时立即编辑原评论，不要新增重复评论。
+
+## Issue 和依赖更新维护
+
+Issue 模板面向中文用户，字段名应直接使用中文，避免 GitHub 页面或浏览器把英文标签翻译成不自然的内容。修改 `.github/ISSUE_TEMPLATE/` 后，应检查模板引用的标签是否存在。
+
+当前模板和 Dependabot 依赖这些标签：
+
+- `bug`
+- `enhancement`
+- `needs-triage`
+- `dependencies`
+
+处理 Dependabot PR 时，先确认标签存在，再本地跑测试。依赖更新通过 CI 后可以合并；合并后需要确认 `master` 上 CI 仍通过。

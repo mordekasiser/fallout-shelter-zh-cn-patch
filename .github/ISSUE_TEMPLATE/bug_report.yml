@@ -1,95 +1,95 @@
-name: Bug report
-description: Report a patch generation, compatibility, or translation problem.
+name: Bug 反馈
+description: 反馈补丁生成、兼容性或翻译问题。
 title: "[Bug]: "
 labels: ["bug", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for testing this Fallout Shelter Chinese patch builder. The project is still in testing, so environment details and script output are important.
+        感谢测试《Fallout Shelter》简体中文补丁工具。项目仍处于测试阶段，请尽量提供系统环境、游戏版本和完整脚本输出，方便定位问题。
 
-        Do not upload official game files, generated full patch packages, full `data.unity3d` files, cracked content, account credentials, or private local configuration.
+        请不要上传官方游戏文件、生成后的完整补丁包、完整 `data.unity3d`、破解内容、账号凭据或本机私有配置。
   - type: checkboxes
     id: safety
     attributes:
-      label: Safety checklist
+      label: 安全确认
       options:
-        - label: I own and installed a legitimate PC copy of Fallout Shelter.
+        - label: 我拥有并安装了正版 PC 版《Fallout Shelter》。
           required: true
-        - label: I am not uploading official game assets or generated full patch packages.
+        - label: 我没有上传官方游戏资源或生成后的完整补丁包。
           required: true
-        - label: If the script failed, I did not force-copy a broken output into the game directory.
+        - label: 如果脚本失败，我没有把可能损坏的输出强制复制到游戏目录。
           required: true
   - type: input
     id: windows-version
     attributes:
-      label: Windows version
-      placeholder: "Example: Windows 11 23H2"
+      label: Windows 版本
+      placeholder: "例如：Windows 11 23H2"
     validations:
       required: true
   - type: input
     id: game-version
     attributes:
-      label: Fallout Shelter version or Steam build
-      placeholder: "Example: Steam PC version, build/date if known"
+      label: Fallout Shelter 版本或 Steam 构建
+      placeholder: "例如：Steam PC 版；如果知道 build 或日期也请填写"
     validations:
       required: true
   - type: dropdown
     id: game-location
     attributes:
-      label: Game directory detection
+      label: 游戏目录识别方式
       options:
-        - Auto-detected by the script
-        - Manually selected when prompted
-        - Manually passed with -GameDir
-        - Not found
+        - 脚本自动识别
+        - 脚本提示后手动粘贴
+        - 使用 -GameDir 手动指定
+        - 没有找到
     validations:
       required: true
   - type: dropdown
     id: failure-area
     attributes:
-      label: Problem area
+      label: 问题位置
       options:
-        - Script startup
-        - Python dependency installation
-        - Steam game directory detection
-        - Patch generation
-        - Manual copy/overwrite step
-        - In-game text or translation
-        - Game update compatibility
-        - Other
+        - 脚本启动
+        - Python 依赖安装
+        - Steam 游戏目录识别
+        - 补丁生成
+        - 手动复制或覆盖步骤
+        - 游戏内文本或翻译
+        - 游戏更新兼容性
+        - 其他
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Steps to reproduce
+      label: 复现步骤
       placeholder: |
-        1. Run ...
-        2. Choose ...
-        3. See ...
+        1. 运行 ...
+        2. 选择 ...
+        3. 出现 ...
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
+      label: 期望表现
     validations:
       required: true
   - type: textarea
     id: actual
     attributes:
-      label: Actual behavior
+      label: 实际表现
     validations:
       required: true
   - type: textarea
     id: script-output
     attributes:
-      label: Script output or error text
-      description: Paste redacted text output. Do not attach official game files or generated patch packages.
+      label: 脚本输出或错误文本
+      description: 请粘贴文本输出，并先删去本机隐私路径或敏感信息。不要附加官方游戏文件或生成后的完整补丁包。
       render: text
   - type: textarea
     id: extra
     attributes:
-      label: Additional context
-      description: For translation issues, quote only the short affected text and describe where it appears.
+      label: 其他补充
+      description: 如果是翻译问题，只需要引用受影响的短文本，并说明它出现在哪里。

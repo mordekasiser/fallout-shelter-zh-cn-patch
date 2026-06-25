@@ -43,6 +43,8 @@ Last updated: 2026-06-25
 - `.github/dependabot.yml`
 - `CHANGELOG.md`
 
+Issue 模板已改为中文字段，避免浏览器或 GitHub 页面把 `Steps to reproduce` 这类字段机器翻译成不自然的文案。仓库也已补齐模板和 Dependabot 使用的 `needs-triage`、`dependencies` 标签。
+
 Private vulnerability reporting 已启用。安全、凭据或版权敏感问题应优先通过 `SECURITY.md` 中的私密报告路径处理，不应公开贴在 Issue 中。
 
 ## 分支保护和合并规则
@@ -83,7 +85,7 @@ GitHub Actions workflow：
   - 后续：新增文本翻译表待后续补充。
 - Issue #3：`[Bug]: 错误，无法生成汉化补丁`
   - 初步判断：用户截图显示使用的是 `v0.1.0-alpha` 旧包，报错正是后续 `master` 已修复的旧 term 缺失问题。
-  - 后续：引导用户改用 `v0.1.1-alpha` 或最新 `master`，如果仍失败再补完整控制台输出。
+  - 后续：引导用户改用 `v0.1.1-alpha` 或最新 `master`，如果仍失败再补完整控制台输出；确认后可关闭。
 - Pull Request #2：`chore: bump pytest from 9.0.2 to 9.1.1`
   - 来源：Dependabot。
   - 后续：需要跑 CI 并确认兼容后再合并。

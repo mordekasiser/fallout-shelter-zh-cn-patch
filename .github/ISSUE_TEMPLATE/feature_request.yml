@@ -1,48 +1,48 @@
-name: Feature request
-description: Suggest an improvement for the patch builder or translation workflow.
+name: 功能建议
+description: 建议改进补丁生成工具或翻译流程。
 title: "[Feature]: "
 labels: ["enhancement", "needs-triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting an improvement. Please keep requests limited to code, docs, scripts, tests, or translation text that can be legally included in this repository.
+        感谢提出建议。请确保建议范围只涉及本仓库可以合法包含的代码、文档、脚本、测试或翻译文本。
   - type: textarea
     id: problem
     attributes:
-      label: What problem would this solve?
-      placeholder: "Example: The script cannot find my Steam library when..."
+      label: 这个建议想解决什么问题？
+      placeholder: "例如：当我的 Steam 库在某个位置时，脚本无法自动找到游戏目录..."
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed solution
-      description: Describe the smallest useful version of the feature.
+      label: 建议的解决方案
+      description: 请描述最小可用版本，不需要一次覆盖所有场景。
     validations:
       required: true
   - type: dropdown
     id: area
     attributes:
-      label: Area
+      label: 涉及范围
       options:
-        - Patch generation script
-        - Steam directory detection
-        - Translation text
-        - Translation validation
-        - Documentation
-        - Testing
-        - Other
+        - 补丁生成脚本
+        - Steam 目录识别
+        - 翻译文本
+        - 翻译校验
+        - 文档
+        - 测试
+        - 其他
     validations:
       required: true
   - type: textarea
     id: legal-boundary
     attributes:
-      label: Repository boundary
-      description: Confirm whether the idea can be implemented without including official game assets, generated full patch packages, cracked files, or third-party closed-source patches.
+      label: 仓库边界
+      description: 请确认这个建议是否可以在不包含官方游戏资源、完整生成补丁包、破解文件或第三方闭源补丁的前提下实现。
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
-      label: Additional context
+      label: 其他补充
