@@ -32,7 +32,13 @@
 
 ### 1. 下载并解压
 
-点击 GitHub 页面右上角绿色 `Code` 按钮，选择 `Download ZIP`。
+普通用户建议优先下载 GitHub Releases 里的最新测试版：
+
+```text
+https://github.com/mordekasiser/fallout-shelter-zh-cn-patch/releases
+```
+
+GitHub 页面右上角绿色 `Code` 按钮里的 `Download ZIP` 下载的是当前 `master` 源码快照，也可以使用，但它不一定对应某个已经归档说明的测试版本。
 
 下载后解压到任意位置，例如：
 
@@ -136,7 +142,9 @@ Fallout Shelter -> 属性 -> 已安装文件 -> 验证游戏文件的完整性
 
 ### 输出文件为什么很大？
 
-补丁会嵌入中文字体，生成的资源包会明显变大。这是为了降低中文显示方块或空白的风险。
+官方 `data.unity3d` 通常是经过压缩或打包后的 Unity 资源包。当前一键脚本生成补丁时会重新保存资源包，并写入中文字体数据和相关字体引用，所以输出文件会明显变大；如果看到输出文件达到约 2.14GB，这通常仍属于当前生成方式下的预期结果。
+
+文件变大本身不代表补丁损坏。更可靠的判断方式是：脚本正常结束、生成目录里出现 `FalloutShelter_Data\data.unity3d`，并且进游戏后中文能正常显示，没有大面积方块、空白、错位或崩溃。
 
 ## 高级命令
 
@@ -149,6 +157,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\generate_patch.ps1 -GameDir "
 运行测试：
 
 ```powershell
+py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m pytest
 ```

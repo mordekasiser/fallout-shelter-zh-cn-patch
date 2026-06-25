@@ -141,11 +141,11 @@ git diff --check
 - `docs/project-status.md`
 - `docs/releases/v0.1.1-alpha.md`
 
-发布后需要回查：
+发布后回查记录：
 
-- GitHub Release：`v0.1.1-alpha`
-- GitHub Actions：发布提交对应的 `CI / tests`
-- Issue #3：提示用户改用新发布版本验证
+- GitHub Release：`v0.1.1-alpha` 已创建；正文已回读确认，中文显示正常。
+- GitHub Actions：发布提交对应的 `CI / tests` 已通过。
+- Issue #3：已提示用户改用新发布版本验证并关闭；如果新版仍失败，可重新打开或新开 Issue。
 
 ## GitHub 评论和中文编码
 
@@ -164,4 +164,4 @@ Issue 模板面向中文用户，字段名应直接使用中文，避免 GitHub 
 - `needs-triage`
 - `dependencies`
 
-处理 Dependabot PR 时，先确认标签存在，再本地跑测试。依赖更新通过 CI 后可以合并；合并后需要确认 `master` 上 CI 仍通过。
+处理 Dependabot PR 时，先确认标签存在，再本地跑测试。依赖更新通过 CI 后可以合并；合并后需要确认 `master` 上 CI 仍通过。如果维护者使用 owner bypass 合并常规 Dependabot PR，需要在项目状态或维护记录中说明测试和 CI 结果。
