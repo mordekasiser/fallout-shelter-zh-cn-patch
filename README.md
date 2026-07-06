@@ -154,7 +154,7 @@ Fallout Shelter -> 属性 -> 已安装文件 -> 验证游戏文件的完整性
 
 ## 高级命令
 
-如果自动查找失败，也可以手动指定游戏目录：
+如果自动查找失败，普通用户优先用生成脚本手动指定游戏目录：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\generate_patch.ps1 -GameDir "你的 Fallout Shelter 游戏目录"
@@ -174,7 +174,15 @@ py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m tools.translation_pipeline validate --translations translations\zh_cn_full.csv
 ```
 
-如果你想用严格模式检查当前游戏资源和翻译表是否完全匹配，可以直接运行底层构建命令，并且不要加 `--allow-unmatched-translations`。普通双击脚本默认会加上这个参数，以便游戏小版本更新后仍可生成补丁。
+如果你想用严格模式检查当前游戏资源和翻译表是否完全匹配，可以直接运行底层构建命令，并且不要加 `--allow-unmatched-translations`。底层命令的 `--game-dir` 不会自动推导资源包位置；非默认安装目录需要同时传 `--bundle`：
+
+```powershell
+.\.venv\Scripts\python.exe -m tools.build_patch `
+  --bundle "你的 Fallout Shelter 游戏目录\FalloutShelter_Data\data.unity3d" `
+  --game-dir "你的 Fallout Shelter 游戏目录"
+```
+
+普通双击脚本默认会加上 `--allow-unmatched-translations`，以便游戏小版本更新后仍可生成补丁。
 
 ## 免责声明
 

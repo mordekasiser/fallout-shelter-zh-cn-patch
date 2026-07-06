@@ -134,6 +134,23 @@ git diff --check
 
 ## 发布记录
 
+### `v0.1.2-alpha` - 2026-07-07
+
+目的：修复一键生成脚本在 `py -3.11` 不可用但系统已有 Python 3.13/3.14 时提前报 “No suitable Python runtime found” 的问题，并补充底层构建命令的非默认目录说明。
+
+记录文件：
+
+- `CHANGELOG.md`
+- `docs/project-status.md`
+- `docs/releases/v0.1.2-alpha.md`
+
+发布后回查记录：
+
+- GitHub Release：待创建。
+- GitHub Release tag：待确认指向本轮最终提交。
+- GitHub Actions：待确认发布提交的 `CI / tests` 通过。
+- Issue #5 / #6：已回复，发布后可补充提示用户改用 `v0.1.2-alpha` 验证。
+
 ### `v0.1.1-alpha` - 2026-06-25
 
 目的：把 `master` 上已经完成并通过测试的生成兼容性修复发布到 GitHub Release，避免用户继续下载 `v0.1.0-alpha` 旧包后遇到已修复的旧 term 缺失报错。

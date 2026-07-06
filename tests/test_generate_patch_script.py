@@ -105,3 +105,48 @@ def test_patch_build_script_returns_only_output_bundle_path(tmp_path: Path) -> N
     assert payload["returnedPath"].endswith(
         "dist\\FalloutShelter_汉化补丁\\FalloutShelter_Data\\data.unity3d"
     )
+
+
+def test_python_launcher_continues_after_failed_exact_py_candidate(tmp_path: Path) -> None:
+    powershell = shutil.which("powershell.exe") or shutil.which("pwsh")
+    if powershell is None:
+        pytest.skip("PowerShell is required to test the Windows patch script")
+
+    repo_root = Path(__file__).resolve().parents[1]
+    common_ps1 = repo_root / "scripts" / "common.ps1"
+    fake_py = tmp_path / "py.cmd"
+    fake_py.write_text(
+        "\n".join(
+            [
+                "@echo off",
+                "if \"%1\"==\"-3.11\" exit /b 1",
+                "if \"%1\"==\"-3\" exit /b 0",
+                "exit /b 1",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    script = f"""
+    $ErrorActionPreference = 'Stop'
+    $env:PATH = {ps_quote(tmp_path)} + [System.IO.Path]::PathSeparator + $env:PATH
+    . {ps_quote(common_ps1)}
+    $launcher = Get-PythonLauncher
+    $launcher.Display
+    """
+
+    completed = subprocess.run(
+        [
+            powershell,
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command",
+            script,
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+
+    assert completed.stdout.strip().splitlines()[-1] == "py -3"

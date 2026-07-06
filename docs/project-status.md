@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-06-25
+Last updated: 2026-07-07
 
 本页记录仓库当前维护状态，方便后续维护者、贡献者或自动化代理快速了解项目边界和治理配置。
 
@@ -24,15 +24,15 @@ Last updated: 2026-06-25
 
 ## 当前发布状态
 
-最新测试发布版本：`v0.1.1-alpha`。
+最新测试发布版本：`v0.1.2-alpha`。
 
-本次发布把 `master` 上已经完成的生成兼容性修复同步到 GitHub Release。
+本次发布把 `master` 上已经完成的 Python 运行时探测修复同步到 GitHub Release。
 
-同一轮大更新内，如果只是修正说明、Issue 回复口径、维护记录或下载提示，仍归入 `v0.1.1-alpha`，不再创建第二个 Release。Release tag 应指向这一轮大更新的最终提交，确保 `Source code (zip)` 包含最新 README 和发布说明。
+本轮包含用户可见的一键生成脚本修复，因此创建 `v0.1.2-alpha`。Release tag 应指向这一轮最终提交，确保 `Source code (zip)` 包含最新 README 和发布说明。
 
-旧的 `v0.1.0-alpha` 发布包仍指向 2026-05-25 的早期提交，不包含“游戏资源缺少旧 term 时继续生成”的修复。用户如果遇到旧版本报错，应优先改用 `v0.1.1-alpha` 或最新 `master`。
+旧的 `v0.1.1-alpha` 发布包不包含 Python 候选探测修复。用户如果遇到 “No suitable Python runtime found”，但系统已有 Python 3.13 或更新版本，应优先改用 `v0.1.2-alpha` 或最新 `master`。
 
-发布说明归档在 [releases/v0.1.1-alpha.md](releases/v0.1.1-alpha.md)。
+发布说明归档在 [releases/v0.1.2-alpha.md](releases/v0.1.2-alpha.md)。
 
 ## GitHub 仓库治理
 
@@ -93,6 +93,12 @@ GitHub Actions workflow：
 - Issue #3：`[Bug]: 错误，无法生成汉化补丁`
   - 状态：已回复并关闭。
   - 结论：用户截图显示使用的是 `v0.1.0-alpha` 旧包，报错正是后续 `v0.1.1-alpha` 已修复的旧 term 缺失问题。
+- Issue #5：`[Bug]: Get-PythonLauncher 会在没有 py -3.11 时提前退出`
+  - 状态：已回复，已移除 `needs-triage`。
+  - 结论：`v0.1.2-alpha` 修复 Python 候选探测提前退出问题。
+- Issue #6：`[Bug]: 生成汉化补丁时遇到“No suitable Python runtime found”...`
+  - 状态：已回复，已移除 `needs-triage`。
+  - 结论：Python 探测问题随 `v0.1.2-alpha` 修复；底层 `tools.build_patch` 的 `--game-dir` / `--bundle` 用法已在 README 中补充说明。
 - Pull Request #2：`chore: bump pytest from 9.0.2 to 9.1.1`
   - 状态：已本地验证、合并并通过 `master` CI。
   - 结果：`requirements-dev.txt` 更新为 `pytest==9.1.1`。

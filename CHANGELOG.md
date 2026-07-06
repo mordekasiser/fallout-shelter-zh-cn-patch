@@ -4,6 +4,18 @@
 
 格式参考 Keep a Changelog，按 Added、Changed、Fixed、Security 等类别整理。
 
+## v0.1.2-alpha - 2026-07-07
+
+### Changed
+
+- README 高级命令说明改为优先推荐 `generate_patch.ps1 -GameDir`，并补充底层 `tools.build_patch` 在非默认游戏目录下需要同时传 `--bundle` 和 `--game-dir`。
+
+### Fixed
+
+- 修复一键生成脚本在 `py -3.11` 不可用、但系统已有 Python 3.13/3.14 时可能提前报 “No suitable Python runtime found” 的问题。
+- Python 启动器探测现在只接受真实可执行文件，避免函数或别名遮蔽 `py` / `python` 造成误判。
+- 补充 PowerShell 回归测试，覆盖精确版本候选失败后继续尝试后续 Python 候选的场景。
+
 ## v0.1.1-alpha - 2026-06-25
 
 ### Added

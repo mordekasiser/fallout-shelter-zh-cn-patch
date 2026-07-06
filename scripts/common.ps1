@@ -36,16 +36,21 @@ function Get-PythonLauncher {
     )
 
     foreach ($candidate in $candidates) {
-        if (-not (Get-Command $candidate.Command -ErrorAction SilentlyContinue)) {
+        if (-not (Get-Command $candidate.Command -CommandType Application -ErrorAction SilentlyContinue)) {
             continue
         }
 
         $args = @()
         $args += $candidate.Args
         $args += @("-c", "import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)")
-        & $candidate.Command @args 2>$null
-        if ($LASTEXITCODE -eq 0) {
-            return [pscustomobject]$candidate
+        try {
+            & $candidate.Command @args 2>$null
+            if ($LASTEXITCODE -eq 0) {
+                return [pscustomobject]$candidate
+            }
+        }
+        catch {
+            continue
         }
     }
 
