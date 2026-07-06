@@ -146,10 +146,10 @@ git diff --check
 
 发布后回查记录：
 
-- GitHub Release：待创建。
-- GitHub Release tag：待确认指向本轮最终提交。
-- GitHub Actions：待确认发布提交的 `CI / tests` 通过。
-- Issue #5 / #6：已回复，发布后可补充提示用户改用 `v0.1.2-alpha` 验证。
+- GitHub Release：`v0.1.2-alpha` 已创建；正文已回读确认，中文显示正常。
+- GitHub Release tag：指向 `533fd2c918c5c18455f3e698ddb9510cc3d3fe23`。
+- GitHub Actions：发布提交对应的 `CI / tests` 已通过。
+- Issue #5 / #6：已提示用户改用 `v0.1.2-alpha` 验证并关闭。
 
 ### `v0.1.1-alpha` - 2026-06-25
 
